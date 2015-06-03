@@ -5,11 +5,9 @@ Created on Fri May 29 13:20:41 2015
 @author: Thomas Pingel
 """
 
-n = 3
-surface = np.reshape(np.arange(1,1+n**2),(n,n))
-#%%
-
 import numpy as np
+
+#%%
 
 def openness(Z,cellsize,lookup_pixels):
 
@@ -72,8 +70,9 @@ def ashift(surface,direction,n=1):
 
 import gdal
 import matplotlib.pyplot as plt
-im = gdal.Open('dk22_dem.tif')
+im = gdal.Open('data/dk22_dem.tif')
 Z = im.ReadAsArray()
 cellsize = im.GetGeoTransform()[1]
 lookup_pixels = 20
 O = openness(Z,cellsize,lookup_pixels)
+plt.imshow(O)
